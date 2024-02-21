@@ -20,6 +20,7 @@ namespace SWAPIWebApplication.Pages
 
 		public void OnGet()
 		{
+			_logger.LogInformation("OnGet Privacy Page");
 		}
 	}
 }

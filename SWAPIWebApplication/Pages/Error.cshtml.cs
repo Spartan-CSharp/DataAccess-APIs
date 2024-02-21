@@ -27,6 +27,7 @@ namespace SWAPIWebApplication.Pages
 		public void OnGet()
 		{
 			RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+			_logger.LogError("OnGet Error Page with RequestId = {RequestId}", RequestId);
 		}
 	}
 }

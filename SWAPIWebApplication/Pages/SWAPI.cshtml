@@ -1,0 +1,113 @@
+﻿@page
+@model SWAPIWebApplication.Pages.SWAPIModel
+@{
+	ViewData["Title"] = "SWAPI";
+}
+
+<div class="text-center">
+	<h1 class="display-4">SWAPI</h1>
+</div>
+
+@if ( Model.Person is null )
+{
+	<div class="text-center">
+		<h2 class="display-5">Person loading from SWAPI....</h2>
+	</div>
+}
+else
+{
+	<div class="text-left">
+		<h2 class="display-5">Person Loaded!</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Data</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Name:</td>
+					<td>@Model.Person.Name</td>
+				</tr>
+				<tr>
+					<td>Height:</td>
+					<td>@Model.Person.Height</td>
+				</tr>
+				<tr>
+					<td>Mass:</td>
+					<td>@Model.Person.Mass</td>
+				</tr>
+				<tr>
+					<td>Hair Color:</td>
+					<td>@Model.Person.Hair_Color</td>
+				</tr>
+				<tr>
+					<td>Skin Color:</td>
+					<td>@Model.Person.Skin_Color</td>
+				</tr>
+				<tr>
+					<td>Eye Color:</td>
+					<td>@Model.Person.Eye_Color</td>
+				</tr>
+				<tr>
+					<td>Birth Year:</td>
+					<td>@Model.Person.Birth_Year</td>
+				</tr>
+				<tr>
+					<td>Gender:</td>
+					<td>@Model.Person.Gender</td>
+				</tr>
+				<tr>
+					<td>Created:</td>
+					<td>@Model.Person.Created</td>
+				</tr>
+				<tr>
+					<td>Edited:</td>
+					<td>@Model.Person.Edited</td>
+				</tr>
+			</tbody>
+		</table>
+		@if ( Model.Films.Count < 1 )
+		{
+			<div class="text-center">
+				<h3 class="display-6">Films loading from SWAPI....</h3>
+			</div>
+		}
+		else
+		{
+			<div class="text-left">
+				<h3 class="display-6">Films Loaded!</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Episode ID</th>
+							<th>Opening Crawl</th>
+							<th>Director</th>
+							<th>Producer</th>
+							<th>Release Date</th>
+							<th>Created</th>
+							<th>Edited</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach ( var film in Model.Films )
+						{
+							<tr>
+								<td>@film.Title</td>
+								<td>@film.Episode_Id</td>
+								<td>@film.Opening_Crawl</td>
+								<td>@film.Director</td>
+								<td>@film.Producer</td>
+								<td>@film.Release_Date</td>
+								<td>@film.Created</td>
+								<td>@film.Edited</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		}
+	</div>
+}
