@@ -5,7 +5,6 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
@@ -32,7 +31,7 @@ namespace SWAPIWebApplication.Pages
 
 		public async Task OnGetAsync()
 		{
-			_logger.LogInformation("OnGet SWAPI Page");
+			_logger.LogInformation("OnGetAsync SWAPI Page");
 			Person = await GetPersonAsync("https://swapi.dev/api/people/1");
 			foreach ( string filmUrl in Person.Films )
 			{
@@ -43,7 +42,7 @@ namespace SWAPIWebApplication.Pages
 
 		private async Task<PersonModel> GetPersonAsync(string personUrl)
 		{
-			using ( var response = await _httpClient.GetAsync(personUrl) )
+			using ( HttpResponseMessage response = await _httpClient.GetAsync(personUrl) )
 			{
 				if ( response.IsSuccessStatusCode )
 				{
@@ -64,7 +63,7 @@ namespace SWAPIWebApplication.Pages
 
 		private async Task<FilmModel> GetFilmAsync(string filmUrl)
 		{
-			using ( var response = await _httpClient.GetAsync(filmUrl) )
+			using ( HttpResponseMessage response = await _httpClient.GetAsync(filmUrl) )
 			{
 				if ( response.IsSuccessStatusCode )
 				{
